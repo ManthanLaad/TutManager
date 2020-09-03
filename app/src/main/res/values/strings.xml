@@ -8,4 +8,8 @@
     <string name="student_info">View, edit, or delete list of registered students</string>
     <string name="fees_info">View, mark fees payment</string>
     <string name="enquiry_info">View list of enquiries, confirm admissions</string>
+    <string name="no_enquiry_text">No enquiries yet</string>
+    <string name="no_student_text">No confirmed students yet</string>
+    <string name="no_attendance_text">No attendance details yet</string>
+    <string name="no_fee_text">No fee details yet</string>
 </resources>
