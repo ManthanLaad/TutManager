@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <include
+        android:id="@+id/main_toolbar"
+        layout="@layout/toolbar"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:paddingTop="@dimen/dimen16"
+            android:paddingBottom="@dimen/dimen16"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/attendance_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="@color/colorPrimaryDark"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="10dp"
+                app:contentPaddingBottom="@dimen/dimen16"
+                app:contentPaddingLeft="@dimen/dimen8"
+                app:contentPaddingRight="@dimen/dimen8"
+                app:contentPaddingTop="@dimen/dimen16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dimen16"
+                    android:layout_marginEnd="@dimen/dimen16"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/pn_bold"
+                        android:text="@string/attendance"
+                        android:textColor="#FFFFFF"
+                        android:textSize="@dimen/text_medium" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen8"
+                        android:fontFamily="@font/pn_regular"
+                        android:text="@string/attendance_info"
+                        android:textColor="#fff"
+                        android:textSize="@dimen/text_small" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fees_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="@color/colorPrimaryDark"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="10dp"
+                app:contentPaddingBottom="@dimen/dimen16"
+                app:contentPaddingLeft="@dimen/dimen8"
+                app:contentPaddingRight="@dimen/dimen8"
+                app:contentPaddingTop="@dimen/dimen16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/attendance_card">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dimen16"
+                    android:layout_marginEnd="@dimen/dimen16"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/pn_bold"
+                        android:text="@string/fees"
+                        android:textColor="#FFFFFF"
+                        android:textSize="@dimen/text_medium" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen8"
+                        android:fontFamily="@font/pn_regular"
+                        android:text="@string/fees_info"
+                        android:textColor="#fff"
+                        android:textSize="@dimen/text_small" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/students_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="@color/colorPrimaryDark"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="10dp"
+                app:contentPaddingBottom="@dimen/dimen16"
+                app:contentPaddingLeft="@dimen/dimen8"
+                app:contentPaddingRight="@dimen/dimen8"
+                app:contentPaddingTop="@dimen/dimen16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fees_card">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dimen16"
+                    android:layout_marginEnd="@dimen/dimen16"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/pn_bold"
+                        android:text="@string/students"
+                        android:textColor="#FFFFFF"
+                        android:textSize="@dimen/text_medium" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen8"
+                        android:fontFamily="@font/pn_regular"
+                        android:text="@string/student_info"
+                        android:textColor="#fff"
+                        android:textSize="@dimen/text_small" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/enquiries_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="@color/colorPrimaryDark"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="10dp"
+                app:contentPaddingBottom="@dimen/dimen16"
+                app:contentPaddingLeft="@dimen/dimen8"
+                app:contentPaddingRight="@dimen/dimen8"
+                app:contentPaddingTop="@dimen/dimen16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/students_card">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dimen16"
+                    android:layout_marginEnd="@dimen/dimen16"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/pn_bold"
+                        android:text="@string/enquiry"
+                        android:textColor="#FFFFFF"
+                        android:textSize="@dimen/text_medium" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen8"
+                        android:fontFamily="@font/pn_regular"
+                        android:text="@string/enquiry_info"
+                        android:textColor="#fff"
+                        android:textSize="@dimen/text_small" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "882578701066",
+    "firebase_url": "https://tutmanager-51505.firebaseio.com",
+    "project_id": "tutmanager-51505",
+    "storage_bucket": "tutmanager-51505.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882578701066:android:948a4bf8cd556bf59318f3",
+        "android_client_info": {
+          "package_name": "com.schari.tutmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882578701066-d7jkq9gg20mk3p6jvtii71n2cj11pmk0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAq1ecMdt7K7BV76RVQlU-QvikmYgzB-0w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "882578701066-d7jkq9gg20mk3p6jvtii71n2cj11pmk0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TutManager</string>
+    <string name="attendance">Attendance</string>
+    <string name="students">Students</string>
+    <string name="enquiry">Enquiry</string>
+    <string name="fees">Fees</string>
+    <string name="attendance_info">Manage, view, and edit student attendance</string>
+    <string name="student_info">View, edit, or delete list of registered students</string>
+    <string name="fees_info">View, mark fees payment</string>
+    <string name="enquiry_info">View list of enquiries, confirm admissions</string>
+</resources>
