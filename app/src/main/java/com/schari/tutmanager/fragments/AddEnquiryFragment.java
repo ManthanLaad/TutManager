@@ -24,6 +24,9 @@ import com.schari.tutmanager.R;
 import com.schari.tutmanager.activities.EnquiryActivity;
 import com.schari.tutmanager.objects.Enquiry;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class AddEnquiryFragment extends Fragment {
 
     private EditText studentName;
@@ -34,6 +37,9 @@ public class AddEnquiryFragment extends Fragment {
     private Button addEnquiryButton;
 
     private DatabaseReference reference;
+
+    private Bundle bundle;
+    private String enquiryId;
 
     public AddEnquiryFragment() {
     }
@@ -51,6 +57,8 @@ public class AddEnquiryFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_add_enquiry, container, false);
 
+        bundle = getArguments();
+
         studentName = view.findViewById(R.id.student_name_enquiry);
         schoolName = view.findViewById(R.id.school_name_enquiry);
         address = view.findViewById(R.id.address_enquiry);
@@ -58,11 +66,34 @@ public class AddEnquiryFragment extends Fragment {
         addEnquiryButton = view.findViewById(R.id.add_enquiry_button);
         otherSchoolName = view.findViewById(R.id.other_school_name_enquiry);
 
+        if (bundle != null) {
+            String nameStr = bundle.getString("name");
+            enquiryId = bundle.getString("id");
+            String schoolStr = bundle.getString("school");
+            String addressStr = bundle.getString("address");
+            String classStr = bundle.getString("standard");
+
+            addEnquiryButton.setText("Update");
+            studentName.setText(nameStr);
+            address.setText(addressStr);
+            String[] schools = getContext().getResources().getStringArray(R.array.schools);
+            String[] classes = getContext().getResources().getStringArray(R.array.classes);
+
+            int schoolPosition = getSchoolPosition(schools, schoolStr);
+            int classPosition = getClassPosition(classes, classStr);
+
+            schoolName.setSelection(schoolPosition);
+            standard.setSelection(classPosition);
+        }
+
         schoolName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 9) {
                     otherSchoolName.setVisibility(View.VISIBLE);
+                    if (bundle != null) {
+                        otherSchoolName.setText(bundle.getString("school"));
+                    }
                 } else {
                     otherSchoolName.setVisibility(View.GONE);
                 }
@@ -104,11 +135,27 @@ public class AddEnquiryFragment extends Fragment {
         }
 
         Enquiry enquiry = new Enquiry(nameString, schoolString, addressString, classString);
-        String key = reference.push().getKey();
-        enquiry.setId(key);
-        reference.child(key).setValue(enquiry);
-        Snackbar.make(addEnquiryButton, "Enquiry Added", Snackbar.LENGTH_SHORT).show();
+
+        if (bundle != null) {
+            reference.child(enquiryId).setValue(enquiry);
+        } else {
+            String key = reference.push().getKey();
+            enquiry.setId(key);
+            reference.child(key).setValue(enquiry);
+            Snackbar.make(addEnquiryButton, "Enquiry Added", Snackbar.LENGTH_SHORT).show();
+        }
+
         getActivity().getSupportFragmentManager().popBackStack();
         EnquiryActivity.fab.animate().alpha(1).setDuration(1000);
+    }
+
+    private int getSchoolPosition(String[] schools, String schoolStr) {
+        int position = new ArrayList<>(Arrays.asList(schools)).indexOf(schoolStr);
+        position = (position > -1) ? position : 9;
+        return position;
+    }
+
+    private int getClassPosition(String[] classes, String classStr) {
+        return new ArrayList<>(Arrays.asList(classes)).indexOf(classStr);
     }
 }

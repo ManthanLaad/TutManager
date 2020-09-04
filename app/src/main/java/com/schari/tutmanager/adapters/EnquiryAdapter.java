@@ -1,22 +1,24 @@
 package com.schari.tutmanager.adapters;
 
 import android.content.Context;
-import android.provider.ContactsContract;
-import android.util.Log;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.schari.tutmanager.R;
+import com.schari.tutmanager.activities.EnquiryActivity;
+import com.schari.tutmanager.fragments.AddEnquiryFragment;
 import com.schari.tutmanager.objects.Enquiry;
 
 import java.util.ArrayList;
@@ -73,7 +75,19 @@ public class EnquiryAdapter extends RecyclerView.Adapter<EnquiryAdapter.EnquiryV
             holder.edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("id", enquiry.getId());
+                    bundle.putString("name", enquiry.getName());
+                    bundle.putString("school", enquiry.getSchool());
+                    bundle.putString("address", enquiry.getAddress());
+                    bundle.putString("standard", enquiry.getStandard());
+                    Fragment f = new AddEnquiryFragment();
+                    f.setArguments(bundle);
 
+                    ((FragmentActivity) v.getContext()).getSupportFragmentManager()
+                            .beginTransaction().addToBackStack("editToAddEnquiry")
+                            .replace(R.id.enquiry_fragment_container, f).commit();
+                    EnquiryActivity.fab.animate().alpha(0).setDuration(1000);
                 }
             });
 
