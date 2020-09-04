@@ -1,8 +1,10 @@
-package com.schari.tutmanager;
+package com.schari.tutmanager.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.schari.tutmanager.R;
 
 public class FeeActivity extends AppCompatActivity {
 

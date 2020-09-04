@@ -7,4 +7,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="BoldTextStyle">
+        <item name="android:textSize">@dimen/text_medium</item>
+        <item name="color">@color/colorBlack</item>
+        <item name="fontFamily">@font/pn_bold</item>
+    </style>
+
+    <style name="RegularTextStyle">
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="color">@color/colorBlack</item>
+        <item name="fontFamily">@font/pn_regular</item>
+    </style>
+
 </resources>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".fragments.AddEnquiryFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
+
+        <Spinner
+            android:id="@+id/school_name_enquiry"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/input_bg"
+            android:entries="@array/schools"
+            android:fontFamily="@font/pn_regular"
+            android:padding="@dimen/dimen16"
+            android:paddingStart="@dimen/dimen16"
+            android:paddingTop="@dimen/dimen8"
+            android:paddingEnd="@dimen/dimen16"
+            android:paddingBottom="@dimen/dimen8"
+            android:prompt="@string/school_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/student_name_enquiry" />
+
+        <EditText
+            android:id="@+id/other_school_name_enquiry"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:autofillHints=""
+            android:visibility="gone"
+            android:background="@drawable/input_bg"
+            android:ems="10"
+            android:fontFamily="@font/pn_regular"
+            android:hint="@string/school_name"
+            android:inputType="textCapWords"
+            android:padding="@dimen/dimen16"
+            android:paddingStart="@dimen/dimen16"
+            android:paddingTop="@dimen/dimen8"
+            android:paddingEnd="@dimen/dimen16"
+            android:paddingBottom="@dimen/dimen8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/school_name_enquiry" />
+
+        <EditText
+            android:id="@+id/address_enquiry"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:autofillHints=""
+            android:background="@drawable/input_bg"
+            android:ems="10"
+            android:fontFamily="@font/pn_regular"
+            android:gravity="start"
+            android:hint="@string/address"
+            android:inputType="textMultiLine|textCapSentences"
+            android:padding="@dimen/dimen16"
+            android:paddingStart="@dimen/dimen16"
+            android:paddingTop="@dimen/dimen8"
+            android:paddingEnd="@dimen/dimen16"
+            android:paddingBottom="@dimen/dimen8"
+            android:singleLine="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/other_school_name_enquiry" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/pn_bold"
+            android:text="@string/enquiry_add_text"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/student_name_enquiry"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:autofillHints=""
+            android:background="@drawable/input_bg"
+            android:ems="10"
+            android:fontFamily="@font/pn_regular"
+            android:hint="@string/student_name"
+            android:inputType="textPersonName|textCapWords"
+            android:padding="@dimen/dimen16"
+            android:paddingStart="@dimen/dimen16"
+            android:paddingTop="@dimen/dimen16"
+            android:paddingEnd="@dimen/dimen16"
+            android:paddingBottom="@dimen/dimen8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <Spinner
+            android:id="@+id/class_enquiry"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/input_bg"
+            android:entries="@array/classes"
+            android:padding="@dimen/dimen16"
+            android:prompt="@string/select_standard"
+            android:spinnerMode="dialog"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/address_enquiry" />
+
+        <Button
+            android:id="@+id/add_enquiry_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_bg"
+            android:elevation="16dp"
+            android:fontFamily="@font/pn_bold"
+            android:text="@string/enquiry_add_button"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/class_enquiry"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

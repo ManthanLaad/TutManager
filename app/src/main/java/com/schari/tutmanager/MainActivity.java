@@ -8,6 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.schari.tutmanager.activities.AttendanceActivity;
+import com.schari.tutmanager.activities.EnquiryActivity;
+import com.schari.tutmanager.activities.FeeActivity;
+import com.schari.tutmanager.activities.StudentActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     private CardView attendanceCard;

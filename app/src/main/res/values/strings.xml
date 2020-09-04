@@ -12,4 +12,42 @@
     <string name="no_student_text">No confirmed students yet</string>
     <string name="no_attendance_text">No attendance details yet</string>
     <string name="no_fee_text">No fee details yet</string>
+    <string name="fab_content_desc">Add new Enquiry</string>
+    <string name="enquiry_add_text">Enter following details</string>
+    <string name="enquiry_add_button">Add Enquiry</string>
+    
+    <string name="student_name">Student Name</string>
+    <string name="school_name">School Name</string>
+    <string name="class_text">"Class"</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="address">Address</string>
+    <string name="select_standard">Click to select class</string>
+    
+    <string-array name="schools">
+        <item>Select School</item>
+        <item>Bal Bharati Vidya Mandir</item>
+        <item>People\'s High School</item>
+        <item>Mushtifund High School</item>
+        <item>Dr. K. B. Hedgewar High School</item>
+        <item>Santa Cruz High School</item>
+        <item>Rosary High School</item>
+        <item>Don Bosco High School</item>
+        <item>Mary Immaculate Girl\'s High School</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="classes">
+        <item>Select Class</item>
+        <item>Class 8</item>
+        <item>Class 9</item>
+        <item>Class 10</item>
+    </string-array>
+    <string-array name="subjects">
+        <item>English</item>
+        <item>Hindi</item>
+        <item>Third Language</item>
+        <item>Maths</item>
+        <item>Science</item>
+        <item>History</item>
+        <item>Geography</item>
+    </string-array>
 </resources>

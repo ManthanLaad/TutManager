@@ -1,8 +1,11 @@
-package com.schari.tutmanager;
+package com.schari.tutmanager.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+
+import com.schari.tutmanager.R;
 
 public class AttendanceActivity extends AppCompatActivity {
 
