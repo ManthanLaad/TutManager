@@ -1,6 +1,10 @@
 package com.schari.tutmanager.fragments;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -108,7 +112,14 @@ public class AddEnquiryFragment extends Fragment {
         addEnquiryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addEnquiry();
+                ConnectivityManager connectivityManager = (ConnectivityManager)
+                        getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+                if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                        connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+                    addEnquiry();
+                } else {
+                    Snackbar.make(v, "No Internet Connection!", Snackbar.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -146,7 +157,13 @@ public class AddEnquiryFragment extends Fragment {
         }
 
         getActivity().getSupportFragmentManager().popBackStack();
-        EnquiryActivity.fab.animate().alpha(1).setDuration(1000);
+        EnquiryActivity.fab.animate().alpha(1).setDuration(1000).setListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                super.onAnimationStart(animation);
+                EnquiryActivity.fab.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     private int getSchoolPosition(String[] schools, String schoolStr) {

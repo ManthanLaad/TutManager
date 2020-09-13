@@ -78,6 +78,7 @@
                     android:layout_weight="1"
                     android:clickable="true"
                     android:focusable="true"
+                    android:contentDescription="@string/confirm"
                     android:src="@drawable/confirm_icon" />
 
                 <ImageView

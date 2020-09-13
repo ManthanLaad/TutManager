@@ -8,4 +8,6 @@
     <color name="colorLightGrey">#dddddd</color>
     <color name="colorDarkGrey">#959494</color>
     <color name="colorTransparent">@android:color/transparent</color>
+    <color name="repeater_icon_background">#DC0007</color>
+    <color name="fresher_icon_background">#3DDC84</color>
 </resources>

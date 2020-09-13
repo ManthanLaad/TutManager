@@ -6,8 +6,13 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.schari.tutmanager.activities.AttendanceActivity;
 import com.schari.tutmanager.activities.EnquiryActivity;
 import com.schari.tutmanager.activities.FeeActivity;
@@ -20,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private CardView studentsCard;
     private CardView enquiryCard;
 
+    private FirebaseAuth auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("TutManager");
         }
+
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
         attendanceCard = findViewById(R.id.attendance_card);
         feesCard = findViewById(R.id.fees_card);
@@ -63,5 +72,20 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, StudentActivity.class));
             }
         });
+
+        signIn();
+    }
+
+    private void signIn() {
+        String email = "schari2509@gmail.com";
+        String password = "soham2509";
+        auth = FirebaseAuth.getInstance();
+        auth.signInWithEmailAndPassword(email, password).
+                addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+                        Log.d("SignIn", "Sign In Success");
+                    }
+                });
     }
 }

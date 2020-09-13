@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -48,7 +50,13 @@ public class EnquiryActivity extends AppCompatActivity {
                         android.R.anim.slide_out_right);
                 fragmentTransaction.replace(R.id.enquiry_fragment_container, new AddEnquiryFragment())
                         .addToBackStack("toAddEnquiry").commit();
-                fab.animate().alpha(0).setDuration(100);
+                fab.animate().alpha(0).setDuration(100).setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        fab.setVisibility(View.INVISIBLE);
+                    }
+                });
             }
         });
     }
@@ -58,7 +66,13 @@ public class EnquiryActivity extends AppCompatActivity {
         super.onBackPressed();
         Fragment f = fragmentManager.findFragmentById(R.id.enquiry_fragment_container);
         if (f instanceof EnquiryListFragment) {
-            fab.animate().alpha(1).setDuration(1000);
+            fab.animate().alpha(1).setDuration(1000).setListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationStart(Animator animation) {
+                    super.onAnimationStart(animation);
+                    fab.setVisibility(View.VISIBLE);
+                }
+            });
         }
     }
 }
