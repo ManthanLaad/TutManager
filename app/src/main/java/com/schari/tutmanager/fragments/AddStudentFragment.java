@@ -8,9 +8,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.ImageFormat;
+import android.graphics.Matrix;
+import android.media.ExifInterface;
+import android.media.Image;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
@@ -27,6 +32,7 @@ import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
@@ -57,6 +63,8 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.Objects;
+
+import id.zelory.compressor.Compressor;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -110,6 +118,8 @@ public class AddStudentFragment extends Fragment {
     private static boolean IS_GEO_SELECTED = false;
 
     public static boolean IS_IMAGE_SELECTED = false;
+
+    private InputStream stream;
 
     private Calendar calendar;
 
@@ -232,6 +242,7 @@ public class AddStudentFragment extends Fragment {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -241,13 +252,28 @@ public class AddStudentFragment extends Fragment {
 
             try {
 
-                profileBitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(),
-                        chosenImageUri);
+                stream = getContext().getContentResolver()
+                        .openInputStream(chosenImageUri);
+
+                BitmapFactory.Options bOptions = new BitmapFactory.Options();
+                bOptions.inSampleSize = 4;
+                profileBitmap = BitmapFactory.decodeStream(stream, null, bOptions);
+
+
+                ExifInterface exifInterface = new ExifInterface(getContext().getContentResolver()
+                        .openInputStream(chosenImageUri));
+                int orientation = exifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION, 1);
+
+                if (orientation == ExifInterface.ORIENTATION_ROTATE_90) {
+                    Matrix matrix = new Matrix();
+                    matrix.postRotate(90);
+                    profileBitmap = Bitmap.createBitmap(profileBitmap, 0, 0,
+                            profileBitmap.getWidth(), profileBitmap.getHeight(), matrix, true);
+                }
 
                 uploadImageButton.setText("Choose Different Image");
                 profileImage.setVisibility(View.VISIBLE);
                 profileImage.setImageBitmap(profileBitmap);
-
                 IS_IMAGE_SELECTED = true;
 
             } catch (Exception e) {
@@ -318,17 +344,7 @@ public class AddStudentFragment extends Fragment {
             final StorageReference profileRef = storageReference
                     .child("profile_pictures/" + key + ".jpg");
 
-//            InputStream stream = null;
-//            try {
-//                stream = new FileInputStream(new File(chosenImageUri.getPath()));
-//
-//            } catch (FileNotFoundException e) {
-//                e.printStackTrace();
-//            }
-
             UploadTask uploadTask = profileRef.putBytes(data);
-//            UploadTask uploadTask = profileRef.putStream(stream);
-//            Log.d("Profile Stream", stream.toString());
             uploadTask.addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception exception) {

@@ -1,32 +1,21 @@
 package com.schari.tutmanager.adapters;
 
-import android.app.Activity;
-import android.app.ActivityOptions;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.shimmer.ShimmerFrameLayout;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -36,11 +25,9 @@ import com.schari.tutmanager.StudentItemClickListener;
 import com.schari.tutmanager.activities.StudentActivity;
 import com.schari.tutmanager.fragments.AddStudentFragment;
 import com.schari.tutmanager.objects.Student;
-import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentViewHolder> {
 
@@ -86,22 +73,6 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentV
             final Student student = students.get(position);
 
             if (student.getProfileImage() != null) {
-//                String imageRef = "profile_pictures/" + student.getId() + ".jpg";
-//                StorageReference ref = storageReference.child(imageRef);
-//
-//                final long TWO_MEGABYTE = 2 * 1024 * 1024;
-//                ref.getBytes(TWO_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-//                    @Override
-//                    public void onSuccess(byte[] bytes) {
-//                        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-//                        holder.profile.setImageBitmap(bitmap);
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception exception) {
-//                        Log.d("Profile Error", exception.getMessage());
-//                    }
-//                });
 
                 Picasso.get()
                         .load(student.getProfileImage())
